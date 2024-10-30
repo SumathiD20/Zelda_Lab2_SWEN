@@ -1,0 +1,5 @@
+CREATE TABLE KorokLocations (
+    Location_ID INT PRIMARY KEY,              -- Unique identifier for each Location
+    Locationname VARCHAR(50) NOT NULL,         -- Location, required
+    Description VARCHAR(100) NOT NULL,    -- required
+);
