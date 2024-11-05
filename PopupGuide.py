@@ -10,6 +10,8 @@ def check_lifelines(number):
         print("No chances left. Sorry the is Game Over!")
     else:
         print("You have {number} which is invalid life, the game of yours will restart. please wait for few minutes as we are rectify the problem")
+        sleep 10s
+        print("Thanks for the patience")
 
 
 
