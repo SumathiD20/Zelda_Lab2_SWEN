@@ -9,7 +9,7 @@ def check_lifelines(number):
     elif number == 0:
         print("No chances left. Sorry the is Game Over!")
     else:
-        print("No. of lives is not valid")
+        print("You have {number} which is invalid life, the game of yours will restart. please wait for few minutes as we are rectify the problem")
 
 
 
