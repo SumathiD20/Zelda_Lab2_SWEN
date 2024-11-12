@@ -7,13 +7,15 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'feat/*'
+      - 'feature/*'
+      - Development
   pull_request:
     branches:
-      - 'feat/*' 
+      - 'feature/*'
+      - Development
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
