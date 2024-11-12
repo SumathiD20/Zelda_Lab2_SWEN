@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Fail on direct push to main
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && github.event.pull_request == null
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && contains(github.event.head_commit.message, 'Merge pull request') == false
         # Checks if the push is directly to main branch without pull request
         run: |
           echo "Direct pushes to main are not allowed. Please use a pull request from a feature branch if it is feature enhancement or Hotfix branch if it's a bug fix."
