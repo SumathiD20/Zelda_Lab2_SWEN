@@ -1,5 +1,5 @@
 # Zelda_Lab2_SWEN
-## This repository contains zelda projects and associated Issues
+## This repository contains zelda projects and associated Issues,pull request
 
 ### Code Base: [PYTHON]
 
