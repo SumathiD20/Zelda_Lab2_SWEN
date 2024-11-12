@@ -6,10 +6,10 @@ name: Python code checker and package intallation
 on:
   push:
     branches:
-      - 'feat*'
+      - 'feat/*'
   pull_request:
     branches:
-      - 'feat*' 
+      - 'feat/*' 
 
 permissions:
   contents: read
