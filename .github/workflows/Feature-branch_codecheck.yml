@@ -5,9 +5,11 @@ name: Python code checker and package intallation
 
 on:
   push:
-    branches: [ "feat/*" ]
+    branches:
+      - 'feat*'
   pull_request:
-    branches: [ "feat/*" ]
+    branches:
+      - 'feat*' 
 
 permissions:
   contents: read
