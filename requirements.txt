@@ -16,3 +16,4 @@ toml==0.10.2
 urllib3==1.26.7
 flake8==5.0.4
 pycodestyle<2.10.0
+Flask==3.0.3
