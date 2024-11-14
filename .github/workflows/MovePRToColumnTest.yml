@@ -1,0 +1,65 @@
+name: Move Issue to Testing on PR Merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  move-issue:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR body for keyword "test"
+        id: check_keyword
+        run: |
+          if [[ "${{ github.event.pull_request.body }}" == *"test"* ]]; then
+            echo "contains_keyword=true" >> $GITHUB_ENV
+          else
+            echo "contains_keyword=false" >> $GITHUB_ENV
+          fi
+
+      - name: Find linked issues in PR body
+        if: env.contains_keyword == 'true'
+        uses: actions/github-script@v6
+        id: find_issues
+        with:
+          script: |
+            const issueNumbers = []
+            const regex = /#(\d+)/g
+            let match;
+            while ((match = regex.exec(process.env.GITHUB_EVENT_PULL_REQUEST_BODY)) !== null) {
+              issueNumbers.push(match[1])
+            }
+            return issueNumbers
+
+      - name: Move linked issues to Testing
+        if: env.contains_keyword == 'true' && steps.find_issues.outputs.result != '[]'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+            const projectBoardColumn = "Testing"; 
+
+            for (const issueNumber of JSON.parse(steps.find_issues.outputs.result)) {
+              const projectItem = await octokit.rest.issues.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber
+              });
+
+              const columns = await octokit.rest.projects.listColumns({
+                project_id: 4
+              });
+
+              const testingColumn = columns.data.find(col => col.name === projectBoardColumn);
+              
+              if (testingColumn) {
+                await octokit.rest.projects.moveProjectCard({
+                  card_id: projectItem.data.card_id,
+                  column_id: testingColumn.id,
+                  position: "top"
+                });
+              }
+            }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
