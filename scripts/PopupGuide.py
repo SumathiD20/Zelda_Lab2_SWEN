@@ -2,9 +2,9 @@
 
 
 def check_lifelines(number):
-    if lives > 4:
+    if number > 4:
         print("Player has {number} lives. Please continue to search the seeds!")
-    elif 1 <= lives <= 3:
+    elif 1 <= number <= 3:
         print("Player has {number} lives. You have very less lives, Better to refer the guide")
     elif number == 0:
         print("No chances left. Sorry the is Game Over!")
