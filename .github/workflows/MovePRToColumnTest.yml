@@ -16,6 +16,7 @@ jobs:
             echo "contains_keyword=true" >> $GITHUB_ENV
           else
             echo "contains_keyword=false" >> $GITHUB_ENV
+          fi
 
       - name: Find linked issues in PR body
         if: env.contains_keyword == 'true'
@@ -44,7 +45,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issueNumber
-              }});
+              });
 
               const columns = await octokit.rest.projects.listColumns({
                 project_id: 4
