@@ -1,0 +1,11 @@
+# .github/labeler.yml
+
+# Label for documentation-related changes
+documentation:
+  - "docs/**"               # Match any changes in the docs directory
+  - "**/*.txt"               # Match any Markdown files
+
+# Label for enhancement-related changes
+enhancement:
+  - "scripts/**"                # Match any changes in the src directory (assuming this is where enhancements happen)
+  

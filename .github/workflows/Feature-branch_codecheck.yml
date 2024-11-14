@@ -10,7 +10,6 @@ on:
       - Development
   pull_request:
     branches:
-      - 'feat*'
       - Development
 
 permissions:
