@@ -31,11 +31,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest build
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+    - name: Create dist directory for artifacts
       run: |
         mkdir -p dist
         cp scripts/* dist/
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
       with:
         name: build-files
         path: dist/
