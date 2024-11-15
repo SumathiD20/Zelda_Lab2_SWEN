@@ -3,7 +3,7 @@
 # Label for documentation-related changes
 documentation:
   - "docs/**"               # Match any changes in the docs directory
-  - "**/*.txt"               # Match any Markdown files
+  - "**/*.txt"               # Match any text files
 
 # Label for enhancement-related changes
 enhancement:
