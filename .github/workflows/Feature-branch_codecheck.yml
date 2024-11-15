@@ -59,5 +59,4 @@ jobs:
     - name: Deploy application
       run: |
         echo "Deploying the application..."
-# Enviromenmt to deploy
         echo "Deployed to the production sucessfully"
