@@ -10,7 +10,7 @@ documentation:
 
 # Label for enhancement-related changes
 enhancement:
-  - "scripts/**"                # Match any changes in the src directory (assuming this is where enhancements happen)
+  - "scripts/**"                # Match any changes in the scripts directory
   - new
   - feature
   
