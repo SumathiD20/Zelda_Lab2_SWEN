@@ -10,6 +10,7 @@ documentation:
 
 # Label for enhancement-related changes
 enhancement:
+
   - "scripts/**"                # Match any changes in the scripts directory
   - new
   - feature
