@@ -4,8 +4,13 @@
 documentation:
   - "docs/**"               # Match any changes in the docs directory
   - "**/*.txt"               # Match any text files
+  - document
+  - docs
+  - documentation
 
 # Label for enhancement-related changes
 enhancement:
-  - "scripts/**"                # Match any changes in the src directory (assuming this is where enhancements happen)
+  - "scripts/**"                # Match any changes in the scripts directory
+  - new
+  - feature
   
