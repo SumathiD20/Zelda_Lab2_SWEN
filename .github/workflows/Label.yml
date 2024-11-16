@@ -4,7 +4,13 @@
 
 
 name: Labeler
-on: [pull_request_target]
+on:
+  - pull_request_target
+  - issues:
+      types:
+        - reopened
+        - opened
+    
 
 jobs:
   label:
@@ -16,5 +22,5 @@ jobs:
 
     steps:
     - uses: actions/labeler@v4
-      with:
+      with
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
