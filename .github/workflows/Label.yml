@@ -5,11 +5,12 @@
 
 name: Labeler
 on:
-  - pull_request_target
-  - issues:
-      types:
-        - reopened
-        - opened
+  pull_request_target:
+  issues:
+    types:
+      - reopened
+      - opened
+
     
 
 jobs:
