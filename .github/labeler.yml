@@ -2,13 +2,10 @@
 
 # Label for bug-related changes
 bug:
-  - title: /bug/i
-  - body: /fix/i
-documentation:
-  - title: /docs/i
-  - body: /documentation/i
-enhancement:
-  - title: /feature/i
-  - body: /enhancement/i
+    - '(bug|fix)'
+enhancement:                            # Label for feature-related changes
+    - '(feature|new)'
+documentation:                         # Label for doc-related changes
+    - '(docs|documentation)'
 
   
