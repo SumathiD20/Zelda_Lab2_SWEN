@@ -15,6 +15,6 @@ jobs:
       - name: Moving issues in Kanban
         uses: bishalrai96/Project_Card_Automation@master
         with:
-            issues: "assigned"
+            #issues: "assigned"
             column: "In Progress"
             repo-token: "${{ secrets.GITHUB_TOKEN }}"
