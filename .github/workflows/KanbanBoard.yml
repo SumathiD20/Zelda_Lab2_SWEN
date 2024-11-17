@@ -1,20 +1,50 @@
-name: Moving issues in project
+name: Update Project Board
 on:
   issues:
     types: [assigned]
-
-permissions:
-  contents: read
-  issues: write
-  pull-requests: write
 
 jobs:
   update_project:
     runs-on: ubuntu-latest
     steps:
-      - name: Moving issues in Kanban
-        uses: bishalrai96/Project_Card_Automation@master
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Add Issue to Project Board
+        uses: actions/github-script@v6
         with:
-            #issues: "assigned"
-            column: "In Progress"
-            repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+            const projectId = '4';  // Replace with your Project ID
+            const columnName = 'In Progress';      // The column name where the issue will go
+            const issueNodeId = context.payload.issue.node_id; // Get the issue's node ID
+
+            // Fetch all projects for the repository
+            const projects = await github.projects.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            // Find the specific project by ID
+            const project = projects.data.find(p => p.id === projectId);
+            if (!project) {
+              throw new Error(`Project with ID ${projectId} not found.`);
+            }
+
+            // Get the columns for the project
+            const columns = await github.projects.listColumns({
+              project_id: projectId,
+            });
+
+            // Find the specific column by name
+            const column = columns.data.find(c => c.name === columnName);
+            if (!column) {
+              throw new Error(`Column "${columnName}" not found in the project.`);
+            }
+
+            // Create a card in the identified column
+            await github.projects.createCard({
+              column_id: column.id,
+              content_id: issueNodeId,
+              content_type: 'Issue',
+            });
+            console.log(`Issue added to column: ${columnName}`);
