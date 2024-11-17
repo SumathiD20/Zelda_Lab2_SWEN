@@ -13,21 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Moving issues in Kanban
-        uses: actions/github-script@v6
+        uses: bishalrai96/Project_Card_Automation@master
         with:
-          script: |
-            const projectId = '4';
-            const columnName = 'In Progress';
-            const issueNodeId = context.payload.issue.node_id;
-
-            const project = await github.projects.get({
-              project_id: projectId
-            });
-
-            const column = project.data.columns.find(c => c.name === columnName);
-
-            await github.projects.createCard({
-              column_id: column.id,
-              content_id: issueNodeId,
-              content_type: 'Issue'
-            });
+            issues: "assigned"
+            column: "In Progress"
+            repo-token: "${{ secrets.GITHUB_TOKEN }}"
