@@ -1,18 +1,18 @@
 name: Auto-Labelling of Issues
+
+
 on:
   issues:
+    types: [opened, reopened]
+  pull_request:
     types: [opened]
 
-permissions:
-  contents: read
-  issues: write
-
 jobs:
-  label_issues:
+  label:
     runs-on: ubuntu-latest
     steps:
       - name: Adding Labels
-        uses: actions/issue-labeler@v3
+        uses: kshvmdn/labeler@v2.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           configuration-path: .github/labeler.yml
