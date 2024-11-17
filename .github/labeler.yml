@@ -1,17 +1,16 @@
 # .github/labeler.yml
 
-# Label for documentation-related changes
+# Label for bug-related changes
+bug:
+  - bug
+  - fix
+# Label for document-related changes
 documentation:
-  - "docs/**"               # Match any changes in the docs directory
-  - "**/*.txt"               # Match any text files
-  - document
   - docs
   - documentation
 
 # Label for enhancement-related changes
 enhancement:
-
-  - "scripts/**"                # Match any changes in the scripts directory
-  - new
   - feature
+  - enhancement
   

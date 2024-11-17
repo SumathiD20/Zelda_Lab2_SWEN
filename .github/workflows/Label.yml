@@ -1,28 +1,18 @@
-# This workflow will triage pull requests and apply a label based on the paths that are modified in the pull request.
-
-# Uses .github/labeler.yml
-
-
-name: Labeler
+name: Auto-Labelling of Issues
 on:
-  pull_request_target:
   issues:
-    types:
-      - reopened
-      - opened
+    types: [opened]
 
-    
+permissions:
+  contents: read
+  issues: write
 
 jobs:
-  label:
-
+  label_issues:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
-
     steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Adding Labels
+        uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/labeler.yml
