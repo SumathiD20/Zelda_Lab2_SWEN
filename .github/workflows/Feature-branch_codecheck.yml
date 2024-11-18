@@ -4,13 +4,12 @@
 name: Build and Test
 
 on:
-  push:
-    branches:
-      - 'feat*'
-      - Development
-  pull_request:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      branch:
+        description: "Reusable script on branches"
+        required: true
+        type: string
 
 permissions:
   contents: read
