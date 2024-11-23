@@ -24,4 +24,5 @@ jobs:
     - name: Run Single Unit Test
       run: |
           export PYTHONPATH=testing
+          export PYTHONPATH=scripts
           pytest -k "testing"
