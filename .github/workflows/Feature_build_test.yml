@@ -1,9 +1,11 @@
 name: Feature Branch build Test
 
 on:
-  push:
+
+  pull_request:
     branches:
-      - 'feat*'
+      - Developement
+
 
 jobs:
   run-build-and-test:
