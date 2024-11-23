@@ -4,11 +4,8 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
   push:
     branches:
-      - main  # Run on pushes to the main branch
-  pull_request:
-    branches:
-      - main  # Run on pull requests targeting the main branch
-
+      - 'feat*'  # Run on pushes to the feature branch
+ 
 jobs:
   run-single-unit-test:
     runs-on: ubuntu-latest
