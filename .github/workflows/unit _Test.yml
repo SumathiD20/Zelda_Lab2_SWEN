@@ -30,4 +30,4 @@ jobs:
       - name: Run Single Unit Test
         run: |
           export PYTHONPATH=testing
-          pytest -k "test_specific_function_name"
+          pytest -k "testing"
