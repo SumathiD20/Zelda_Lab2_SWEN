@@ -1,0 +1,26 @@
+name: Deploy job
+
+on:
+  pull_request:
+        branches:
+          - main
+
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/Feature-branch_codecheck.yml
+    with:
+      branch: main
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs : [call-reusable]
+    if: success()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy Application
+        run: |
+            echo "Deploying application..."
+            echo "Deployed to the production sucessfully"

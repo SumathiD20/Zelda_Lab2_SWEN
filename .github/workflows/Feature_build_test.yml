@@ -1,0 +1,12 @@
+name: Feature Branch build Test
+
+on:
+  push:
+    branches:
+      - 'feat*'
+
+jobs:
+  run-build-and-test:
+    uses: ./.github/workflows/Feature-branch_codecheck.yml
+    with:
+      branch: ${{ github.ref_name }}
